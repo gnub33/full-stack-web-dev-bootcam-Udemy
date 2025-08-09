@@ -17,7 +17,34 @@ TODO: Change the background color for each device
     body {
       background-color: aquamarine;
     }
-  </style>
+
+    /* min - min width style is applied, max - max width style applied */
+    /* can combine: @media (max-width: 500px) and (min-width: 900px) */
+    /* styles for screens less than 500 and greater than 900 */
+    @media (max-width: 480px) {
+      body {
+        background-color: lightsalmon;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width:1200px) {
+      body {
+        background-color: powderblue;
+      }
+    }
+
+    @media (min-width: 1201px) and (max-width: 1600px) {
+      body {
+        background-color: limegreen;
+      }
+    }
+
+    @media (min-width: 1601px) {
+      body {
+        background-color: seagreen;
+      }
+    }
+  </style> 
 </head>
 
 <body>
