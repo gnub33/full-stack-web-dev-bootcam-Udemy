@@ -19,11 +19,83 @@
     HINT: Remember you can't change the properties of grid lines.
     But grid lines are transparent!
     */
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .frame {
+      width: 748px;
+      height: 748px;
+      background-color: #F0F1EC;
+      display: grid;
+      grid-template-columns: 320px 9px 198px 9px 153px 9px 50px;
+      grid-template-rows: 414px 9px 130px 19px 155px 9px 20px;
+    }
+
+    .red {
+      background-color: #E72F24;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+    .blue {
+      background-color: #004592;
+      grid-column-start: 7;
+      grid-row-start: 3;
+      border-bottom: #000 19px solid;
+    }
+    .yellow {
+      background-color: #f9d01e; 
+      grid-column: 3;    
+      grid-row: 7; 
+    }
+    .black {
+      background-color: #232629;
+      grid-column: 4/6;
+      grid-row: 7;
+    }
+
+    .line {
+      background-color: #000;
+    }
+    .one {
+      grid-column: 2/3;
+      grid-row: 1/8;
+    }
+    .two {
+      grid-column: 6;
+      grid-row: 2/78
+    }
+
+    .three {
+      grid-row:2/3;
+      grid-column: 1/8; 
+    }
+
+    .four {
+      grid-row: 6;
+      grid-column: 1/7;
+    }
+
+
   </style>
 </head>
 
 <body>
   <!-- Write your HTML here -->
+   <div class="frame">
+    <div class="red block"></div>
+    <div class="blue block'"></div>
+    <div class="yellow block"></div>
+    <div class="black block"></div>
+    <div class="line one"></div>
+    <div class="line two"></div>
+    <div class="line three"></div>
+    <div class="line four"></div>
+   </div>
 </body>
 
 </html>
