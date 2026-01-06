@@ -10,6 +10,13 @@
   <meta charset="UTF-8">
   <title>CSS Float</title>
   <style>
+
+    /*
+    Float allows us to wrap text around an element
+    applied on image, not text, taken out of normal html flow
+    clear:left - means cleared of left float (ignores float)
+    clear:both - both sides
+    */
     div {
       display: inline-block;
       width: 40%;
@@ -19,17 +26,24 @@
       font-size: 2em;
     }
 
+    img {
+      float: left;
+    }
+
     .cat {
       background-color: aquamarine;
+      float: left;
     }
 
     .dog {
       background-color: coral;
+      float: right;
     }
 
     footer {
       text-align: center;
       background-color: blueviolet;
+      clear: both;
     }
   </style>
 </head>

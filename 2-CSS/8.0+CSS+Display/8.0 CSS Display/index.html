@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 
+
+
+
 <!-- 
   TODO
 1. By changing only the display property of the CSS make all 3 squares line up horizontally like in goal1 image.
@@ -10,6 +13,13 @@
 <head>
   <title>CSS Display Property Example</title>
   <style>
+
+    /*
+    display:inline - elements on same line - default to size bc default to content
+    display:block (default) - full width block
+    display:inline-block - same line but can set wid/heigt
+    diplay:none - element disapears
+    */
     p {
       color: white;
     }
@@ -22,14 +32,14 @@
     }
 
     .green {
-      display: inline;
+      display: block;
       width: 200px;
       height: 200px;
       background-color: green;
     }
 
     .blue {
-      display: inline-block;
+      display: block;
       width: 200px;
       height: 200px;
       background-color: blue;
