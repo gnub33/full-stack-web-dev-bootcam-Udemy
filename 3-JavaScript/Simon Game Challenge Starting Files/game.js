@@ -1,6 +1,8 @@
 var gameStart = false;
 var level = 0;
 
+//STEP 8, Each level should start with an empty userClicked array. pattern array persists. User must click each color in order THEN compare to pattern array.
+
 var userClickedPattern = [];
 var gamePattern = [];
 let buttonColors = ["red", "blue", "yellow", "green"];
@@ -14,6 +16,10 @@ $("body").on("keydown", function() {
 })
 
 $(".btn").on("click", function() {
+
+    // reset userClickedPattern for every letter. 
+    // User must click entire pattern from beginning to end. 
+    // arrays are compared at the end.
 
     if(gameStart == true) {
         var userChosenColor = this.id;
