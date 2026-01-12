@@ -9,7 +9,7 @@ let buttonColors = ["red", "blue", "yellow", "green"];
 
 $("body").on("keydown", function() {
     if(gameStart == false) {
-        //console.clear();
+        console.clear();
         gameStart = true;
         //$("h1").text("Level 0");
         nextSequence();
@@ -32,7 +32,7 @@ $(".btn").on("click", function() {
 
         userClickedPattern.push(userChosenColor);
 
-        checkPatterns(userClickedPattern.length-1);
+        checkPatterns(level);
     }
     
 })
@@ -47,7 +47,7 @@ function nextSequence() {
     $('#' +randomChosenColor).delay(100).fadeOut(100).fadeIn('slow');
 
     gamePattern.push(randomChosenColor);
-    //console.log("gamePattern: " + gamePattern)
+    console.log("gamePattern: " + gamePattern)
 
     if(gameStart == true) {
         level++;
@@ -58,14 +58,47 @@ function nextSequence() {
 }
 
 function checkPatterns(currentLevel) {
-    if (userClickedPattern[currentLevel] == gamePattern[currentLevel]) {
-        console.log("success");
-    }
-    else {
-        console.log("wrong");
+    // check only occurs when button is pressed
+    // new sequence only occurs when gamePattern current is exhausted
+
+    for (var i=0; i < userClickedPattern.length; i++) {
+        // compares last button pressed with a color from game pattern
+        // each button press must match existing pattern
+        var userLen = userClickedPattern.length;
+
+        if (userClickedPattern[userLen-1] == gamePattern[i]) {
+            //continue round until end of gamePattern
+            console.log("pattern length is " + gamePattern.length + " and user pattern len is " + userClickedPattern.length);
+
+            setTimeout(function() {
+                nextSequence();
+            }, 1000);
+        }
+        else {
+            //alert("game OVER");
+            gameStart = false;
+            level = 0;
+            //console.clear();
+            $("#level-title").text("WRONG! To Play Again, Press A Key");
+
+            console.log(userClickedPattern[userClickedPattern.length-1]);
+            console.log(gamePattern[0]);
+            console.log("pattern is '" + gamePattern + "' and you clicked '" + userClickedPattern +"'");
+
+            gamePattern = []; //reset
+
+            $("body").on("keydown", function() {
+                if(gameStart == false) {
+                    console.clear();
+                    gameStart = true;
+                    //$("h1").text("Level 0");
+                    nextSequence();
+                }
+            })
+        }
+
     }
 
-    if( userClickedPattern[])
 }
 
 function playSound(name) {
