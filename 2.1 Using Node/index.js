@@ -1,17 +1,7 @@
+//var generateName = require('sillyname');
+//var sillyName = generateName();
 
-// using CJS - common js
-// refer to docs
+import { randomSuperhero } from "superheroes";
+const name = randomSuperhero();
 
-const fs = require("fs");
-
-// write to file
-// fs.writeFile("message", "Make cash money now. Today.", (err) => {
-//     if (err) throw err;
-//     console.log("The file has been saved!")
-// })
-
-// read contents of a file
-fs.readFile("message.txt", "utf8", (err, data) => {
-    if (err) throw err;
-    console.log(data);
-});
+console.log(`I am ${sillyName}!.`);
