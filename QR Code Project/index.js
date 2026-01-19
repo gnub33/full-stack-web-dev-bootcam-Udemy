@@ -4,15 +4,15 @@
 3. Create a txt file to save the user input using the native fs node module
 */
 
+// change all to accomadate EJS
 import inquirer from "inquirer";
 import qr from "qr-image";
 import fs from "fs";
 
-var feedback = "";
-
 inquirer
   .prompt([
     {
+        // This is an object
         type: 'input',
         message: 'Enter a url',
         name: 'URL'
