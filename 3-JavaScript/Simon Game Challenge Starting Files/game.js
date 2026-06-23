@@ -1,71 +1,94 @@
 var gameStart = false;
 var level = 0;
-
-//STEP 8, Each level should start with an empty userClicked array. pattern array persists. User must click each color in order THEN compare to pattern array.
-
+var userChosenColor = ""; 
 var userClickedPattern = [];
 var gamePattern = [];
 let buttonColors = ["red", "blue", "yellow", "green"];
 
+// after game over, press a key to restart
+// left console logs in for debugging. can view current arrays for both game and user
+
 $("body").on("keydown", function() {
     if(gameStart == false) {
-        //console.clear();
+        level = 0;
         gameStart = true;
-        //$("h1").text("Level 0");
         nextSequence();
     }
 })
 
 $(".btn").on("click", function() {
 
-    // reset userClickedPattern for every letter. 
-    // User must click entire pattern from beginning to end. 
-    // arrays are compared at the end.
+    console.clear();
 
     if(gameStart == true) {
-        var userChosenColor = this.id;
-        playSound(userChosenColor);
-        animatePress(userChosenColor);
+        userChosenColor = this.id;
 
-        //array must be cleared before every round
-        userClickedPattern = [];
+        userClickedPattern.push(userChosenColor); //push color into user array
 
-        userClickedPattern.push(userChosenColor);
+        checkPatterns(userClickedPattern.length-1); //compare after each selection
 
-        checkPatterns(userClickedPattern.length-1);
+        if (userClickedPattern.length == gamePattern.length) {
+        nextSequence();
+        }
     }
-    
-})
+    if(gameStart == true) {
+     if (userClickedPattern.length == gamePattern.length) {
+        nextSequence();
+     }
+    }
 
-function nextSequence() {
-    $("#level-title").text("Level " + level);  
-         
+    console.log("user: " + userClickedPattern);
+    console.log("game: " + gamePattern);
+
+    if(gameStart == false) {
+        $("level-title").text("Game Over");
+    }
+
+    //console.log("Level: " + level);
+    
+});
+
+function nextColor() {
+        
     var randomNumber = Math.floor(Math.random() * 4);
     var randomChosenColor = buttonColors[randomNumber];
 
-    playSound(randomChosenColor);
-    $('#' +randomChosenColor).delay(100).fadeOut(100).fadeIn('slow');
+    setTimeout(() => {
+        playSound(randomChosenColor);
+        $('#' +randomChosenColor).delay(200).fadeOut(200).fadeIn('slow');
+    }, 500);
+
+    //console.log("current random color: " + randomChosenColor);
 
     gamePattern.push(randomChosenColor);
-    //console.log("gamePattern: " + gamePattern)
-
-    if(gameStart == true) {
-        level++;
-    }
-
-    //++level;
-   //console.log(level);
+    console.log("gamePattern: " + gamePattern);
 }
 
-function checkPatterns(currentLevel) {
-    if (userClickedPattern[currentLevel] == gamePattern[currentLevel]) {
-        console.log("success");
+function nextSequence(){
+    userClickedPattern = [];
+    level++;
+
+    $("#level-title").text("Level " + level);  
+
+    nextColor();
+
+}
+
+function checkPatterns(currentIndex) {
+    // number of colors to be compared == current level
+    
+    if (userClickedPattern[currentIndex] != gamePattern[currentIndex]) {
+        wrongAnimation();
+        //console.log("wrong wrong boo");
+        $("#level-title").text("game OVER");  
+        gameStart = false;
+        gamePattern = []; // replay option if user press key aga
     }
     else {
-        console.log("wrong");
+        //console.log("success!!!");
+        playSound(userChosenColor);
+        animatePress(userChosenColor);
     }
-
-    if( userClickedPattern[])
 }
 
 function playSound(name) {
@@ -81,3 +104,24 @@ function animatePress(currentColor) {
         }, 100);
     
 }
+
+function wrongAnimation() {
+    playSound("wrong");
+    $("body").addClass("game-over");
+    setTimeout(function() {
+        $("body").removeClass("game-over");
+        }, 400);
+}
+
+
+//psudecode
+
+// press a key to start
+// key triggers game state to on
+// a random color is chosen, animation plays, it is put into gamePattern array
+//user clicks a color
+// if it is correct AND the arrays match, move to next level
+// before starting new level, userArray must be empty
+// Next color triggers only once, 
+// user click every color currently insisde patternarry in correct sequence with no visual validation
+// after each click, colors in each array are evaluated for match

@@ -74,7 +74,7 @@ document.addEventListener("keypress", function(e) {
             audio.play();
             break;
         default:
-            console.log('testing');
+            break;
 }
 
 })
