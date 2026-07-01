@@ -3,5 +3,17 @@ const app =  express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-    res.send("<h1>Jelly & Butter</h1>")
+    res.send("<h1>Jelly & Butter</h1>");
+})
+
+app.get("/about", (req, res) => {
+    res.send("<h1>This is a page about me<h1>");
+})
+
+app.get("/contact", (req, res) => {
+    res.send("<h1>If you would like to contact me, this page will explain how.<h1>");
+})
+
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
 })
