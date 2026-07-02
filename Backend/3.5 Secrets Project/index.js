@@ -19,12 +19,26 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+//using middleware
+// var userIsAuthorised = false;
+// function passwordCheck(req, res, next) {
+//     const password = req.body["password"];
+//     if (password === "ILoveProgramming") {
+//         userIsAuthorised = true;
+//     }
+//     next();
+// }
+// app.use(passwordCheck);
+
+
+//when user hits submit, form is submitted to /check route using POST method, not /submit
 app.post("/check", (req, res) => {
   console.log("password entered: " + req.body.password);
   if (req.body["password"] == validPassword) {
     res.sendFile(__dirname + "/public/secret.html");
   } else {
-    res.sendFile(__dirname + "/public/index.html");
+    //res.sendFile(__dirname + "/public/index.html");
+    res.redirect("/");
   }
 });
 
