@@ -2,9 +2,20 @@
 <%-include("partials/header.ejs"); %>
 
 
+<% if (locals.latest) { %>
+    <%= latest %>
+<% } else { %>
+    <p>Welcome
+        <%= usr %>
+    </p>
+<% } %>
+
 <form action="/submit" method="POST">
-    <label for="blog-post">insert_time</label>
-    <input type="text" name="blog-post" required>
+    <label for="blog-post">
+        <%= new Date().getHours() %>:
+        <%= new Date().getMinutes()%>
+    </label>
+    <textarea id="blgpst" name="blgpst" placeholder="Express yourself through words!" rows="4" cols="50"></textarea>
     <input type="submit" value="Submit Post">
  </form>
 

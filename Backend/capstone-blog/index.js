@@ -23,14 +23,16 @@ app.get("/", (req, res) => {
 // })
 
 app.post("/login", (req, res) => {
-    const user = "email";
-    const pass = "0000";
-    res.render("home.ejs", {username: user, password: pass});
+    const user = req.body["username"];
+    const password = req.body["password"];
+
+    res.render("home.ejs", {usr: user, pass: password});
     console.log(req.body);
 })
 
 app.post("/submit", (req, res) => {
-    res.render("home.ejs" );
+    const blgpst = req.body["blgpst"]
+    res.render("home.ejs", {latest : blgpst});
     console.log(req.body);
 })
 
