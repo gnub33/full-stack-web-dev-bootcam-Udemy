@@ -31,13 +31,11 @@ app.post("/login", (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
-    //const blogs =[];
     const blgpst = req.body["blgpst"]
     
     blogs.push(blgpst);
     
     res.render("home.ejs", {latest : blogs});
-    console.log(blogs.length);
 })
 
 app.listen(port, () => {
@@ -45,3 +43,13 @@ app.listen(port, () => {
 })
 
 const blogs = [];
+
+function confirm() {
+    var txt;
+    if(confirm ("Are for real homeboy?")) {
+        txt = "Post Deleted!";
+        alert(txt);
+    } else {
+        pass;
+    }
+}

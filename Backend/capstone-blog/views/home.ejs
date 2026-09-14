@@ -5,7 +5,14 @@
 <% if (locals.latest) { %>
     <ul>
         <% latest.forEach((blarg) => { %>
-        <li><%= blarg %></li>
+        <li>
+            <%= blarg %>
+            <form action="/update" method="Post">
+                <input type="submit" value="Edit">
+            </form>
+            <button onclick="">Delete</button>
+        </li>
+        
         <% }) %>
     </ul>
 <% } else { %>
