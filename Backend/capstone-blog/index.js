@@ -31,11 +31,17 @@ app.post("/login", (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
+    //const blogs =[];
     const blgpst = req.body["blgpst"]
-    res.render("home.ejs", {latest : blgpst});
-    console.log(req.body);
+    
+    blogs.push(blgpst);
+    
+    res.render("home.ejs", {latest : blogs});
+    console.log(blogs.length);
 })
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 })
+
+const blogs = [];

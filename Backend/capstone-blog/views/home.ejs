@@ -3,7 +3,11 @@
 
 
 <% if (locals.latest) { %>
-    <%= latest %>
+    <ul>
+        <% latest.forEach((blarg) => { %>
+        <li><%= blarg %></li>
+        <% }) %>
+    </ul>
 <% } else { %>
     <p>Welcome
         <%= usr %>
