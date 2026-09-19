@@ -1,18 +1,32 @@
-</html><%-include("partials/header.ejs"); %>
+
+<%-include("partials/header.ejs"); %>
 
 
-<h2>Welcome to BLARG!</h2>
-<h3>Post what you want.</h3>
-<h4>When you want.</h4>
-<p>How you want.</p>
+<% if (locals.latest) { %>
+        <% latest.forEach((post) => { %>
+        <div class="post">
+            <%= post.content %>
+            <form action="/posts/<%= post.id %>/delete" method="Post">
+                <button type="submit">Delete</button>
+            </form>
+        <div>
+        <% }) %>
+<% } else { %>
+    <p>Welcome
+        <%= usr %>
+    </p>
+<% } %>
 
-<form action="/login" method="POST">
-    <label for="username">Username</label>
-    <input type="text" name="username">
-    <label for="password">Password</label>
-    <input type="text" name="password">
-    <input type="submit" value="Sign In">
-</form>
+<form action="/submit/post" method="POST">
+    <label for="blog-post">
+        <%= new Date().getHours() %>:
+        <%= new Date().getMinutes()%>
+    </label>
+    <textarea id="postItem" name="postItem" placeholder="Express yourself through words!" rows="4" cols="50"></textarea>
+    <input type="submit" value="Submit Post">
+ </form>
 
 
 <%-include("partials/footer.ejs"); %>
+
+
