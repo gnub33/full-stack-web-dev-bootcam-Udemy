@@ -4,13 +4,25 @@
 
 <% if (locals.latest) { %>
         <% latest.forEach((post) => { %>
-        <div class="post">
-            <%= post.content %>
-            <form action="/posts/<%= post.id %>/delete" method="Post">
-                <button type="submit">Delete</button>
-            </form>
-        <div>
+            <div class="post">
+                <%= post.content %>
+                <form action="/posts/<%= post.id %>/delete" method="Post">
+                    <button id="del" type="submit">Delete</button>
+                </form>
+                
+                <button type="button" onclick="toggleEdit('<%= post.id %>')">Edit</button>
+
+                <form 
+                    id="editForm-<%= post.id %>" 
+                    style="display: none" 
+                    action="/posts/<%= post.id %>/edit" 
+                    method="Post">
+                    <textarea name="content"><%= post.content %></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            <div
         <% }) %>
+
 <% } else { %>
     <p>Welcome
         <%= usr %>
@@ -26,7 +38,9 @@
     <input type="submit" value="Submit Post">
  </form>
 
+<script src="/js/toggle.js"></script>
 
 <%-include("partials/footer.ejs"); %>
+
 
 
