@@ -32,15 +32,11 @@ app.post("/home", (req, res) => {
     console.log(req.body);
 })
 
-app.post("/submit/post", (req, res) => {
-   
-    const blgpst = {id: allBlogs.length + 1, content:req.body.postItem} // may need to change to let??
-    
+app.post("/submit", (req, res) => {
+    console.log(req.body);
+    const blgpst = {id: Date.now(), content:req.body.postItem}
     allBlogs.push(blgpst);
-    
-    res.render("index.ejs", {latest : allBlogs});
-
-    console.log()
+    res.redirect("/");
 })
 
 app.listen(port, () => {
@@ -51,6 +47,16 @@ app.post("/posts/:id/delete", (req, res) => {
     const id = parseInt(req.params.id);
     allBlogs = allBlogs.filter(post => post.id !== id);
     res.redirect("/"); 
+})
+
+app.post("/posts/:id/edit", (req, res) => {
+    const newId = parseInt(req.params.id)
+    const post = allBlogs.find(post => post.id === newId);
+
+    if (post) {
+        post.content = req.body.postItem;
+    }
+    res.redirect("/");
 })
 
 let allBlogs = [];
