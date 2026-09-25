@@ -1,0 +1,80 @@
+body {
+  background: #222;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+  color: hotpink;
+}
+
+button {
+    margin: 4px 2px;
+}
+
+.button {
+    padding: 8px;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    background-color:hotpink;
+    color:blanchedalmond;
+}
+
+.post-actions {
+    display: flex;
+    gap: 7px;
+}
+
+p.time {
+    font-size: 12px;
+    color: rgb(244, 191, 243);
+}
+
+main {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 40px;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center; */
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
+.form-post {
+    position: absolute;
+    bottom: 75px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+
+input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  font-size: 0.9rem;
+  background: #888;
+  padding: 1rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}
+
+

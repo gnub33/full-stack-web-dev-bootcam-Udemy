@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser"
+import formatTime from "./formatTime.js"
 const app = express();
 const port = 3000;
 
@@ -7,21 +8,20 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-    res.render("index.ejs", {usr :'p_nut', latest: allBlogs});
+    res.render("index.ejs", {usr :'p_nut', latest: allBlogs, formatTime});
 })
 
+app.get("/about", (req, res) => {
+    res.render("about.ejs");
+})
 
-// app.get("/about", (req, res) => {
-//     res.render("about.ejs");
-// })
+app.get("/settings", (req, res) => {
+    res.render("settings.ejs");
+})
 
-// app.get("/settings", (req, res) => {
-//     res.render("settings.ejs");
-// })
-
-// app.get("/help", (req, res) => {
-//     res.render("help.ejs");
-// })
+app.get("/help", (req, res) => {
+    res.render("help.ejs");
+})
 
 app.post("/home", (req, res) => {
     //for login page
@@ -33,14 +33,13 @@ app.post("/home", (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
-    console.log(req.body);
-    const blgpst = {id: Date.now(), content:req.body.postItem}
+    const blgpst = {
+        id: Date.now(), 
+        content:req.body.postItem, 
+        time: new Date()
+    }
     allBlogs.push(blgpst);
     res.redirect("/");
-})
-
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
 })
 
 app.post("/posts/:id/delete", (req, res) => {
@@ -59,6 +58,10 @@ app.post("/posts/:id/edit", (req, res) => {
     res.redirect("/");
 })
 
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+})
+
 let allBlogs = [];
 
 function confirm() {
@@ -69,14 +72,6 @@ function confirm() {
     } else {
         pass;
     }
-}
-
-function addButtons(index, array) {
-    let updateBtn = document.createElementButton("button");
-    updateBtn.innerHTML = "Edit";
-
-    let delBtn = document.createElementButton("button");
-    delBtn.innerHTML = "Delete"
 }
 
 

@@ -1,41 +1,47 @@
 
 <%-include("partials/header.ejs"); %>
 
-
-<% if (locals.latest) { %>
+<div class="post">
+    <% if (locals.latest) { %>
         <% latest.forEach((post) => { %>
-            <div class="post">
+            <div class="post-content">
                 <%= post.content %>
-                <form action="/posts/<%= post.id %>/delete" method="Post">
-                    <button id="del" type="submit">Delete</button>
-                </form>
-            
-                <button type="button" onclick="toggleEdit('<%= post.id %>')">Edit</button>
 
-                <form 
-                    id="editForm-<%= post.id %>" 
-                    style="display: none" 
-                    action="/posts/<%= post.id %>/edit" 
-                    method="Post">
-                    <textarea id="postItem" name="postItem"><%= post.content %></textarea>
-                    <button type="submit">Submit</button>
-                </form>
+                <div class="post-actions">
+                    <p class="time"><%= formatTime(post.time) %></p>
+                    
+                    <form action="/posts/<%= post.id %>/delete" method="Post">
+                        <button id="del" type="submit">Delete</button>
+                    </form>
+                
+                    <div class="toggle-edit">
+                        <button type="button" onclick="toggleEdit('<%= post.id %>')">Edit</button>
+
+                        <form 
+                            id="editForm-<%= post.id %>" 
+                            style="display: none" 
+                            action="/posts/<%= post.id %>/edit" 
+                            method="Post">
+                            <textarea id="postItem" name="postItem"><%= post.content %></textarea>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         <% }) %>
 
-<% } else { %>
-    <p>Welcome
-        <%= usr %>
-    </p>
-<% } %>
+    <% } else { %>
+        <p>Welcome
+            <%= usr %>
+        </p>
+    <% } %>
+</div>
 
-<form action="/submit" method="POST">
-    <label for="blog-post">
-        <%= new Date().getHours() %>:
-        <%= new Date().getMinutes()%>
-    </label>
+
+<form class="form-post" action="/submit" method="POST">
+    <label for="blog-post"></label>
     <textarea id="postItem" name="postItem" placeholder="Express yourself through words!" rows="4" cols="50"></textarea>
-    <input type="submit" value="Submit Post">
+    <input class="button" type="submit" value="Submit Post">
  </form>
 
 <script src="/js/toggle.js"></script>
