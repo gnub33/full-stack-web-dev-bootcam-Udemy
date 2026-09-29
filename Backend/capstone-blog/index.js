@@ -49,11 +49,11 @@ app.post("/posts/:id/delete", (req, res) => {
 })
 
 app.post("/posts/:id/edit", (req, res) => {
-    const newId = parseInt(req.params.id)
-    const post = allBlogs.find(post => post.id === newId);
+    const id = parseInt(req.params.id)
+    const oldPost = allBlogs.find(post => post.id === id);
 
-    if (post) {
-        post.content = req.body.postItem;
+    if (oldPost) {
+        oldPost.content = req.body.postItem;
     }
     res.redirect("/");
 })
