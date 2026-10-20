@@ -1,2 +1,10 @@
+# .gitignore (at repo root)
+node_modules/
+dist/
+build/
+.env
+*.log
+
 GIT/quakejs
 GIT/word-mastermind
+
