@@ -5,6 +5,7 @@ build/
 .env
 *.log
 
-GIT/quakejs
-GIT/word-mastermind
+GIT/
+node_modules/
 
+*.json
