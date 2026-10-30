@@ -9,3 +9,6 @@ GIT/
 node_modules/
 
 *.json
+api-example-bored-api
+GIT/quakejs
+GIT/word-mastermind
