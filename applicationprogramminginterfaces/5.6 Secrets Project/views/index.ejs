@@ -12,11 +12,36 @@
 </head>
 
 <body>
-  <h1>What's your secret?</h1>
-  <div class="card">
+  <h1>JokeBox</h1>
+  <div>
     <p>
-      <%= secret %>
+      Select your parameters to recieve a random joke!
     </p>
+
+    <form id="myForm" method="post">
+      <label for="category">Category:</label>
+      <input type="text" id="category" name="cat">
+
+      <label for="flags">Flags:</label>
+      <input type="text">
+
+      <label for="lang">Language:</label>
+      <input type="text">
+
+      <label for="type">Type:</label>
+      <input type="text">
+
+      <label for="contains">Contains:</label>
+      <input type="text" id="contains" name="contains">
+
+      <label for="submit">Category</label>
+      <input type="submit" id="any" value="GET" formaction="/any">
+      <input type="submit" id="misc" value="GET" formaction="/misc">
+      <input type="submit" id="program" value="GET" formaction="/program">
+      <input type="submit" id="program" value="GET" formaction="/program">
+      <input type="submit" id="program" value="GET" formaction="/program">
+      <input type="submit" id="program" value="GET" formaction="/program">
+    </form>
   </div>
   <p class="user">
     <%= user %>
