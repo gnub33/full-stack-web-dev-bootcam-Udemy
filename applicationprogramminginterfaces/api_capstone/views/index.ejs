@@ -8,44 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-    }
 
-    .container {
-      max-width: 600px;
-      margin: 50px auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-    }
-
-    form {
-      display: table;
-    }
-
-    div.form-item {
-      display: table-row;
-    }
-
-  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>JokeBox</h1>
-    <h2>
-      Select your parameters to recieve a random joke!
-    </h2>
+  <section>
+    <div class="center">
+      <h1>JokeBox</h1>
+      <h2>
+        Select your parameters to recieve a random joke!
+      </h2>
+    </div>
 
     <div class="form-style">
       <form id="myForm" method="POST" action="/">
+        <fieldset>
+          <legend>JokeBox</legend>
 
-        <div class="form-item">
           <label for="cat">Category:</label>
           <select name="cat" id="cat">
             <option value="Any">Any</option>
@@ -56,22 +35,25 @@
             <option value="Spooky">Spooky</option>
             <option value="Christmas">Xmas</option>
           </select>
-        </div>
 
-        <div class="form-item">
-          <label for="flags">Flags:</label>
-          <select name="flags" id="flags">
-            <option value="">-- Optional --</option>
-            <option value="nsfw">NSFW</option>
-            <option value="religion">Religous</option>
-            <option value="political">Political</option>
-            <option value="racist">Racist</option>
-            <option value="sexist">Sexist</option>
-            <option value="explicit">Explicit</option>
-          </select>
-        </div>
-        
-        <div class="form-item">
+          <div class="checks">
+            <p>Optional Flags</p>
+
+            <input type="checkbox" id="nswf" name="blacklist" value="NSFW">
+            <label for="nsfw">NSFW</label>
+            <input type="checkbox" id="religion" name="blacklist" value="religion">
+            <label for="religion">Religion</label>
+            <input type="checkbox" id="political" name="blacklist" value="political">
+            <label for="political">Political</label>
+            <input type="checkbox" id="racist" name="blacklist" value="racist">
+            <label for="racist">Racist</label>
+            <input type="checkbox" id="sexist" name="blacklist" value="sexist">
+            <label for="sexist">Sexist</label>
+            <input type="checkbox" id="explicit" name="blacklist" value="explicit">
+            <label for="explicit">Explicit</label>
+          </div>
+          
+          
           <label for="lang">Language:</label>
           <select name="lang" id="lang">
             <option value="en" selected>English</option>
@@ -81,24 +63,21 @@
             <option value="es">Spanish</option>
             <option value="de">German</option>
           </select>
-        </div>
-        
-        <div class="form-item" class="type">
-          <label for="single">Single</label>
-          <input type="radio" id="single" name="type" value="single">
+          
+          <div class="checks">
+            <p>Joke Type</p>
+            <input type="radio" id="single" name="type" value="single">
+            <label for="single">Single</label>
+            
+            <input type="radio" id="twopart" name="type" value="twopart">
+            <label for="twopart">Two Part</label>
+          </div>
 
-          <label for="twopart">Two Part</label>
-          <input type="radio" id="twopart" name="type" value="twopart">
-        </div>
-
-        <div class="form-item">
           <label for="cont">Contains:</label>
           <input type="text" id="cont" name="cont">
-        </div>
-        
-        <div class="form-item">
-          <input type="submit" value="Submit">
-        </div>
+          
+          <input type="submit" value="Get Joke" id="submit">
+        </fieldset>
       </form>
 
     <div class="joke">
@@ -112,7 +91,7 @@
           <% } %>
         </div>
       <% } %>
-    </div>
+      </section>
 
 
   </div>

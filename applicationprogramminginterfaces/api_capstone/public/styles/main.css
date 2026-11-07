@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #232222;
+    margin: 0;
+    padding: 0;
+    color: rgb(231, 231, 231);
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+fieldset {
+    max-width: 525px;
+    min-width: 200px;
+    margin: 50px auto;
+    background-color: #383030;
+    padding: 1em 2em;
+    border: solid 1px #e162ec;
+    border-radius: 5px;
+    color: fuchsia;
+}
+
+legend {
+    font-size: 1.25em;
+    padding: 0 .25em;
+    color: fuchsia;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 1em;
+}
+
+.checks label { 
+    margin-top: 0;
+}
+
+label:first-of-type {
+    margin-top: 0;
+}
+
+/* Inputs and textarea */
+input {
+    padding: .5em;
+    border: solid 1px #999;
+}
+
+select {
+    padding: .25em;
+    width: 12em;
+}
+
+/* radio buttons and checkboxes */
+.checks {
+    margin-bottom: 1em;
+}
+
+.checks p {
+    margin-bottom: 0;
+}
+
+input[type="checkbox"] + label, input[type="radio"] + label 
+{
+    display: inline-block;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+input[type="radio"] {
+    margin-left: 1.5em;
+    margin-right: 0;
+}
+
+input[type="radio"]:first-of-type {
+    margin-left: 0;
+}
+
+/* Submit Button */
+input[type="submit"] {
+    display: block;
+    margin-top: 2.5em;
+    padding: .5em 1em;
+    border: solid 2px fuchsia;
+    border-radius: 6px;
+    background-color: #333;
+    color: fuchsia;
+    font-family: 'Lato', sans-serif;
+    font-size: .8em;
+    transition: all 0.5s ease;
+}
+
+.holographic-card {
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  
+}
+
+.holographic-card h2 {
+  color: fuchsia;
+  font-size: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+input[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(0, 255, 170, 0.3)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+input[type="submit"]:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(0,255,255,0.5);
+  background: fuchsia;
+  color: #383030;
+}
+
+input[type="submit"]:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+.joke {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:teal;
+    padding: 0px 80px;
+}

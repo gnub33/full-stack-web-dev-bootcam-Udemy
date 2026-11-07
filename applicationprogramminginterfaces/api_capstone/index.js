@@ -16,10 +16,11 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req,res) => {
     try {
+        const flags = [].concat(req.body.blacklist || []);
         const cat = req.body.cat;
         const response = await axios.get(`${API_URL}/${cat}`, {
             params: {
-                blacklistFlags: req.body.flag,
+                blacklistFlags: flags.join(','),
                 lang: req.body.lang,
                 type: req.body.type,
                 contains: req.body.cont,
